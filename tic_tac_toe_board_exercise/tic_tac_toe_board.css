@@ -16,15 +16,12 @@ td{
 	height: 100px;
 }
 
-#one, #two, #four, #five{
-  border-right: black solid 1px;
-  border-bottom: black solid 1px;
+.vertical{
+	border-left: 1px black solid;
+	border-right: 1px black solid;
 }
 
-#three, #six{
-	border-bottom: black solid 1px;
-}
-
-#seven, #eight{
-	border-right: black solid 1px;
+.horizontal{
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
 }
