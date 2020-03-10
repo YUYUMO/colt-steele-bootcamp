@@ -1,5 +1,10 @@
 #header{
-  background-image: url("https://image.shutterstock.com/image-photo/blue-sky-white-soft-clouds-260nw-760620454.jpg");
+  background-image: url("https://9qc8d2s5fezl5f0tzmhwu7c-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/17447144_web1_20170518-KCN-M-Pemberton.jpg");
   background-position: center;
   background-size: cover;
+}
+
+img{
+  height: 200px;
+  width: 200px;
 }
