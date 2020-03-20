@@ -12,6 +12,13 @@ while(number <= 40){
   number++;
 }
 
+//shorted version
+// var number = 10
+// while(number <=40){
+//   console.log(number);
+//   number+=2;
+// }
+
 var number = 300
 while (number <= 333){
   if(number % 2 !== 0){
