@@ -3,16 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Score Keeper Project</title>
+  <title>SCORE KEEPER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="score.css">
 </head>
 <body>
-  <h1><span id = "p1Display">0</span> to <span id= "p2Display">0</span></h1>
-  <p>Playing to: <span id="winningScoreDisplay">5</span></p>
-  <input type="number">
-  <button id = "p1">Player One</button>
-  <button id = "p2">Player Two</button>
-  <button id = "reset">Reset</button>
+  <h3 id="title">SCORE KEEPER</h3>
+  <div id="score">
+    <div id="p1Score">
+      <span id = "p1Display">0</span>
+    </div>
+    <div id="p2Score">
+      <span id= "p2Display">0</span>
+    </div>
+  </div>
+  <div id="players">
+    <div id="player1">
+      <p>Player 1</p>
+    </div>
+    <div id="player2">
+      <p>Player 2</p>
+    </div>
+  </div>
+  <div id="winningScoreInput">
+    <h3 class="font">Playing to: <span id="winningScoreDisplay">5</span></h3>
+    <input type="number" placeholder ="Enter winning score">
+  </div>
+  <div id="buttons">
+    <button id = "p1">Player One</button>
+    <button id = "p2">Player Two</button>
+    <button id = "reset">Reset</button>
+  </div>
   <script type="text/javascript" src="score.js"></script>
 </body>
 </html>

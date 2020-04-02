@@ -1,3 +1,96 @@
+body{
+  background-color: #5603AD;
+  font-family: 'Comic Neue', cursive;
+}
+
+#title{
+  color: white;
+  text-align: center;
+  font-size: 100px;
+  margin: 30px 0px 30px 0px;
+}
+
+#p1Score, #p2Score{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  margin: 0px 50px 0px 50px;
+  background-color: #B3E9C7;
+}
+
+#score{
+  display: flex;
+  justify-content: center;
+}
+
+#p1Display, #p2Display{
+  font-size: 100px;
+  text-align: center;
+}
+
+#players{
+  display: flex;
+  justify-content: center;
+}
+
+#player1, #player2{
+  width: 100px;
+  height: 100px;
+  margin: 0 95px 0 95px;
+}
+
+#player1 p, #player2 p{
+  text-align: center;
+  color: #F0FFF1;
+  font-size: 25px;
+}
+
+#winningScoreDisplay{
+  text-align: center;
+}
+
+#winningScoreInput{
+  display: flex;
+  justify-content: center;
+}
+
+input{
+  margin-top: 18px;
+  margin-left: 20px;
+  width: 180px;
+  height: 20px;
+  padding: 0;
+  overflow: auto;
+  border-width: 0px;
+  text-align: center;
+}
+
+input::placeholder{
+  text-align: center;
+  font-family:'Comic Neue', cursive;
+  font-size: 15px;
+}
+
+#buttons{
+  display: flex;
+  justify-content: center;
+}
+
+#p1, #p2, #reset{
+  margin: 50px 50px 0 50px;
+  padding: 20px;
+  background-color: #A5F0CE;
+  font-family:'Comic Neue', cursive;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+.font{
+  color: white;
+}
+
 .winning{
-  color: green;
+  color: #8367C7;
 }
