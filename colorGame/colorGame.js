@@ -1,11 +1,4 @@
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 255, 0)",
-  "rgb(0, 255, 0)",
-  "rgb(0, 255, 255)",
-  "rgb(0, 0, 255)",
-  "rgb(255, 0, 255)"
-]
+var colors = generateRandomColors(6);
 
 var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
@@ -23,7 +16,7 @@ for(var i = 0; i < squares.length; i++){
   // compare clicked square color to picked color
     if(clickedColor === pickedColor){
       changeColor(clickedColor);
-      message.textContent = "Success!";
+      message.textContent = "Correct!";
     } else {
       this.style.backgroundColor = "#232323";
       message.textContent = "Try Again!";
@@ -42,4 +35,27 @@ function changeColor(color){
 function pickColor(){
   var random = Math.floor(Math.random()*colors.length);
   return colors[random];
+}
+
+function generateRandomColors(num){
+  //create an array
+  arr = [];
+  //loop through the array
+  for(var i = 0; i < num; i++){
+    // generate random colors and push them to array
+    arr.push(randomColors());
+  }
+  // return the array
+  return arr;
+}
+
+function randomColors(){
+  // choose a random red value
+  var r = Math.floor(Math.random()*256);
+  // choose a random green value
+  var g = Math.floor(Math.random()*256);
+  // choose a random blue value
+  var b = Math.floor(Math.random()*256);
+  // combine these values and return a string
+  return ("rgb" + "(" + r + ", " + g +", " + b + ")");
 }
