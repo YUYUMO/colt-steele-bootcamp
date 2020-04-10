@@ -67,6 +67,7 @@ button{
   font-weight: 700;
   color: steelblue;
   letter-spacing: 1px;
+  outline: none;
   font-size: inherit;
   transition: all 0.3s;
     /* browser support */
