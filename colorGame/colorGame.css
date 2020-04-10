@@ -1,10 +1,19 @@
 body{
   background-color: #232323;
+  margin: 0; 
+  font-family: "Montserrat", "Avenir";
 }
 
 h1{
   color: white;
   text-align: center;
+  margin: 0;
+  background-color: steelblue;
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: 1.1;
+  padding: 20px 0;
+  font-size: 200%;
 }
 
 .container{
@@ -31,4 +40,9 @@ h1{
 
 .selected{
   background-color: blue;
+}
+
+#colorDisplay{
+  display: block;
+  font-size: 200%;
 }

@@ -12,6 +12,7 @@ var hardBtn = document.getElementById("hardBtn");
 easyBtn.addEventListener("click", function(){
   easyBtn.classList.add("selected");
   hardBtn.classList.remove("selected");
+  h1.style.backgroundColor = "steelblue";
   // generate random 3 colors
   numSquares = 3;
   colors = generateRandomColors(numSquares);
@@ -36,6 +37,7 @@ easyBtn.addEventListener("click", function(){
 hardBtn.addEventListener("click", function(){
   hardBtn.classList.add("selected");
   easyBtn.classList.remove("selected");
+  h1.style.backgroundColor = "steelblue";
   // generate random 6 colors
   numSquares = 6;
   colors = generateRandomColors(numSquares);
@@ -63,7 +65,7 @@ reset.addEventListener("click", function(){
     squares[i].style.backgroundColor = colors[i];
   }
   // change the color of h1 to dark grey
-  h1.style.backgroundColor = "#232323";
+  h1.style.backgroundColor = "steelblue";
 });
 
 colorDisplay.textContent = pickedColor;
@@ -82,7 +84,7 @@ for(var i = 0; i < squares.length; i++){
       h1.style.backgroundColor = clickedColor; 
       reset.textContent = "Play Again?";
     } else {
-      this.style.backgroundColor = "#232323";
+      this.style.backgroundColor = "steelblue";
       message.textContent = "Try Again!";
     }
   });
