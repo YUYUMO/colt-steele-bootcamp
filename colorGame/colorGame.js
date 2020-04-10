@@ -20,6 +20,8 @@ easyBtn.addEventListener("click", function(){
   pickedColor = pickColor();
   // change the text of the picked color
   colorDisplay.textContent = pickedColor;
+   // change the message to an empty string
+   message.textContent = "";
   // loop through the squares 
   for(var i = 0; i<squares.length; i++){
     //if there is a new color corresponding to the square
@@ -45,6 +47,8 @@ hardBtn.addEventListener("click", function(){
   pickedColor = pickColor();
   // change the text of the picked color;
   colorDisplay.textContent = pickedColor;
+   // change the message to an empty string
+   message.textContent = "";
   // loop through the squares
   for(var i = 0; i<squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
@@ -60,6 +64,8 @@ reset.addEventListener("click", function(){
   pickedColor = pickColor();
   // change the text to the correct color
   colorDisplay.textContent = pickedColor;
+  // change the message to an empty string
+  message.textContent = "";
   // change the colors of squares
   for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
