@@ -25,6 +25,6 @@ $("input[type='text']").keypress(function(event){
     // clear the input field 
     $(this).val("");
     // add a new li to the end of ul
-    $("ul").append("<li><span>X</span> " + todoText + "</li>");
+    $("ul").append("<li><span><i class='fas fa-trash-alt'></i></span> " + todoText + "</li>");
   }
 });
