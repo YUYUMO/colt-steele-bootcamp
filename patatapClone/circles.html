@@ -5,13 +5,23 @@
 	<link rel="stylesheet" href="circles.css">
 <!-- Define inlined PaperScript associate it with myCanvas -->
   <script type="text/paperscript" canvas="myCanvas">
+  var circles = [];
+  // when you hit a key, generate circles at random location and add them to circles array
   function onKeyDown(event){
     var maxPoint = new Point(view.size.width, view.size.height);
     var randomPoint = Point.random();
     var point = maxPoint * randomPoint;
-	  new Path.Circle(point, 10).fillColor = 'orange';
-    console.log(view.size.height);
-    console.log(view.size.width);
+	  var newCircle = new Path.Circle(point, 500);
+    newCircle.fillColor = 'orange';
+    circles.push(newCircle);
+  }
+
+  // loop through the circles array and change their color hues and shrink their size
+  function onFrame(event){
+    for(var i = 0; i < circles.length; i++){
+      circles[i].fillColor.hue += 1;
+      circles[i].scale(.9);
+    } 
   }
   </script>
 </head>
