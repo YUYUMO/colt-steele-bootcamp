@@ -31,16 +31,18 @@ var Blog = mongoose.model("Blog",blogSchema);
 // Blog.create(
 //   {
 //     title: "Test Blog",
-//     image: "https://images.unsplash.com/photo-1437957146754-f6377debe171?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=800&q=60",
+//     image: "https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
 //     body: "HELLO, THIS IS A BLOG POST!"
 //   }
 // )
 
 //RESTFUL routes
+
 app.get("/", function(req,res){
   res.redirect("/blogs");
 });
 
+// index route
 
 app.get("/blogs", function(req,res){
   Blog.find({}, function(err, blogs){
@@ -52,6 +54,23 @@ app.get("/blogs", function(req,res){
   });
 });
 
+// new route
+app.get("/blogs/new", function(req, res){
+  res.render("new");
+});
+
+//create route
+app.post("/blogs", function(req,res){
+  //create blog
+  Blog.create(req.body.blog, function(err, newBlog){
+    if(err){
+      res.render("new");
+    }else{
+      // redirect to the index
+      res.redirect("/blogs");
+    }
+  });
+});
 
 // set up listener
 app.listen(3000, function(){
