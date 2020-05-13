@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var methodOverride = require("method-override");
 
 //set up mongoose
 mongoose.set('useUnifiedTopology', true);
@@ -15,6 +16,9 @@ app.use(express.static("public"));
 
 // set up body parser
 app.use(bodyParser.urlencoded({extended: true}));
+
+// tell our app to use method override
+app.use(methodOverride("_method"));
 
 //set up Mongoose schema
 var blogSchema = new mongoose.Schema({
@@ -83,6 +87,29 @@ app.get("/blogs/:id",function(req,res){
   });
 });
  
+//EDIT route
+app.get("/blogs/:id/edit",function(req,res){
+  //find the right blog by ID
+  Blog.findById(req.params.id, function(err, foundBlog){
+    if(err){
+      res.redirect("/blogs");
+    }else{
+      res.render("edit",{blog:foundBlog});
+    }
+  });
+})
+
+//UPDATE route
+app.put("/blogs/:id",function(req,res){
+  // (id of the blog, new data to be parsed, callback)
+  Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err,updatedBlog){
+    if(err){
+      res.redirect("/blogs");
+    } else {
+      res.redirect("/blogs/" + req.params.id);
+    }
+  });
+});
 
 // set up listener
 app.listen(3000, function(){
