@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
+var expressSanitizer = require("express-sanitizer");
 
 //set up mongoose
 mongoose.set('useUnifiedTopology', true);
@@ -13,6 +14,9 @@ app.set("view engine", "ejs");
 
 //use public folder for stylesheet
 app.use(express.static("public"));
+
+//tell the app to use express sanitizer
+app.use(expressSanitizer());
 
 // set up body parser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -66,6 +70,10 @@ app.get("/blogs/new", function(req, res){
 //create route
 app.post("/blogs", function(req,res){
   //create blog
+  console.log(req.body);
+  req.body.blog.body = req.sanitize(req.body.blog.body);
+  console.log("==============");
+  console.log(req.body);
   Blog.create(req.body.blog, function(err, newBlog){
     if(err){
       res.render("new");
@@ -101,6 +109,7 @@ app.get("/blogs/:id/edit",function(req,res){
 
 //UPDATE route
 app.put("/blogs/:id",function(req,res){
+  req.body.blog.body = req.sanitize(req.body.blog.body);
   // (id of the blog, new data to be parsed, callback)
   Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err,updatedBlog){
     if(err){
