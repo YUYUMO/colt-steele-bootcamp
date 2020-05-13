@@ -111,6 +111,19 @@ app.put("/blogs/:id",function(req,res){
   });
 });
 
+//DESTROY route
+app.delete("/blogs/:id", function(req, res){
+  // destroy blog
+  Blog.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.redirect("/blogs");
+    }else{
+      // redirect somewhere
+      res.redirect("blogs");
+    }
+  });
+});
+
 // set up listener
 app.listen(3000, function(){
   console.log("Server has started!!");
