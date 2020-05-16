@@ -3,13 +3,14 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
+var seedDB = require("./seeds")
 
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true }); 
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
+seedDB();
 
 
 // Campground.create(
@@ -84,10 +85,11 @@ app.get("/campgrounds/new", function(req, res){
 //SHOW route - show info about one campground
 app.get("/campgrounds/:id", function(req,res){
   //find the campground with provided id
-  Campground.findById(req.params.id,function(err, foundCampground){
+  Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
     if(err){
       console.log(err);
     }else {
+      console.log(foundCampground);
       //render show template with that campground
       res.render("show", {campground: foundCampground});
     }
