@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var Campground = require("./models/campground");
+var Comment = require("./models/comment");
 var seedDB = require("./seeds")
 
 mongoose.set('useUnifiedTopology', true);
@@ -108,6 +109,32 @@ app.get("/campgrounds/:id/comments/new", function(req,res){
     }
   })
 })
+
+// comment CREATE route - add new comment to campground
+app.post("/campgrounds/:id/comments", function(req,res){
+  //lookup campground using ID
+  Campground.findById(req.params.id, function(err,campground){
+    if(err){
+      console.log(err);
+      res.redirect("/campgrounds");
+    } else {
+      // console.log(req.body.comment);
+      //create new comment
+      Comment.create(req.body.comment, function(err, comment){
+        if(err){
+          console.log(err);
+        } else {
+          //connect new comment to campground
+          campground.comments.push(comment);
+          campground.save();
+          // redirect campground show page
+          res.redirect("/campgrounds/" + campground._id);
+        }
+      })
+    }
+  })
+})
+
 
 app.listen(3000, function(){
   console.log("Server has started!!");
