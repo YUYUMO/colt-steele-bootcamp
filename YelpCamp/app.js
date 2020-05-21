@@ -7,7 +7,7 @@ var LocalStrategy = require("passport-local");
 var Campground = require("./models/campground");
 var Comment = require("./models/comment");
 var User = require("./models/user");
-var seedDB = require("./seeds")
+var seedDB = require("./seeds");
 
 // requiring routes
 var commentRoutes = require("./routes/comments");
@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 // console.log(__dirname);
-seedDB();
+
+// seedDB(); // seed the database
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
