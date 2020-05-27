@@ -44,7 +44,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
+  // pass currentUser to all templates
   res.locals.currentUser = req.user;
+  // pass flash message to all templates
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 
