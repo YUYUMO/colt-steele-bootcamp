@@ -5,14 +5,30 @@ var middleware = require("../middleware");
 
 // INDEX route - show all campgrounds
 router.get("/", function(req, res){ 
-  //get all campgrounds from database
-  Campground.find({}, function(err, allCampgrounds){
-    if(err){
-      console.log(err);
-    } else {
-      res.render("campgrounds/index", {campgrounds:allCampgrounds, currentUser: req.user});
-    }
-  });
+  if(req.query.search){
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    Campground.find({name: regex}, function(err, allCampgrounds){
+      if(err){
+        console.log(err);
+      } else {
+        if(allCampgrounds.length < 1){
+          req.flash("error", "No campground matches that query. Please try again!");
+          res.redirect("back");
+        } else{
+        res.render("campgrounds/index", {campgrounds:allCampgrounds});
+        }
+      }
+    });
+  }else{
+     //get all campgrounds from database
+    Campground.find({}, function(err, allCampgrounds){
+      if(err){
+        console.log(err);
+      } else {
+        res.render("campgrounds/index", {campgrounds:allCampgrounds, currentUser: req.user});
+      }
+    });
+  }
 });
 
 // CREATE route - add new dog to Database
@@ -122,5 +138,10 @@ router.delete("/:id", middleware.checkCampgroundOwnership,function(req,res){
 //     res.redirect("back");
 //   }
 // }
+
+// for fuzzy search . Match any characters globally
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
